@@ -6,6 +6,7 @@ const bt_loading = document.getElementById("btn_loading");
 const ctx = draw_canvas.getContext("2d");
 const context = my_canvas.getContext("2d");
 let first_draw = true;
+let draw_work = false;
 
 my_video.style.display = "none";
 
@@ -46,33 +47,36 @@ let count = 0;
 function run_detection() {
     lmodel.detect(my_video).then(predictions => {
         //console.log(predictions);
-        let detected_class = predictions[0].class;
-        if(predictions[0].bbox[0]=== undefined){
-            clear();
-        }
-        if(detected_class === 0){
-            if(first_draw){
-                startX = predictions[0].bbox[0]+(predictions[0].bbox[2]/2);
-                startY = predictions[0].bbox[1]+(predictions[0].bbox[3]/2);
-                first_draw =false;
+        if (predictions[0].label !== undefined && predictions[0].label !== 'face') {
+            let detected_class = predictions[0].label;
+            
+            if (first_draw) {
+                startX = predictions[0].bbox[0] + (predictions[0].bbox[2] / 2);
+                startY = predictions[0].bbox[1] + (predictions[0].bbox[3] / 2);
+                first_draw = false;
+                draw_work = true;
             }
-            // let drawCheck = checkLength(curX,curY,(predictions[0].bbox[0]+(predictions[0].bbox[2]/2)),(predictions[0].bbox[1]+(predictions[0].bbox[3]/2)));
-            // console.log(drawCheck);
-            // if(drawCheck === true){
-                if(count === 1){
-                    curX = predictions[0].bbox[0]+(predictions[0].bbox[2]/2);
-                    curY = predictions[0].bbox[1]+(predictions[0].bbox[3]/2);
-                    draw(startX, startY, curX, curY);
-                    startX = curX;
-                    startY = curY;
-                    count = 0;
-                }
-            // }
-            console.log(lmodel.getModelParameters());
-            count ++;
-         }
+            if (detected_class === 'closed' && draw_work === true) {
+                draw_work = false;
+                first_draw = true;
+                ctx.clearRect(0, 0, draw_canvas.width, draw_canvas.height);
+
+            }
+               
+            if (detected_class === 'open' && draw_work === true) {
+                curX = predictions[0].bbox[0] + (predictions[0].bbox[2] / 2);
+                curY = predictions[0].bbox[1] + (predictions[0].bbox[3] / 2);
+                draw(startX, startY, curX, curY);
+                startX = curX;
+                startY = curY;
+                count = 0;
+            }
+            
+        }
+        console.log(draw_work);
         lmodel.renderPredictions(predictions, my_canvas, context, video);
     });
+    
 }
 
 
@@ -94,7 +98,7 @@ function clear (){
 const modelParams = {
     flipHorizontal: true, // flip e.g for video
     imageScaleFactor: 0.9, // reduce input image size for gains in speed.
-    maxNumBoxes: 1, // maximum number of boxes to detect
+    maxNumBoxes: 3, // maximum number of boxes to detect
     iouThreshold: 0.9, // ioU threshold for non-max suppression
     scoreThreshold: 0.8 // confidence threshold for predictions.
 };
