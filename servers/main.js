@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 
 app.use(express.urlencoded({ extended: false }));
 
+app.get('/', function (req, res) {
+	res.send('success');
+});
+
 app.post('/detect', function (req, res) {
 	const data = req.body;
 	console.log(data);
