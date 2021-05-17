@@ -52,6 +52,7 @@ let count = 0;
 function run_detection() {
 	lmodel.detect(my_video).then((predictions) => {
 		//console.log(predictions);
+		lmodel.renderPredictions(predictions, my_canvas, context, video);
 		if (predictions[0].label !== undefined && predictions[0].label !== 'face') {
 			let detected_class = predictions[0].label;
 			if (first_draw) {
@@ -77,7 +78,6 @@ function run_detection() {
 				startY = curY;
 			}
 		}
-		lmodel.renderPredictions(predictions, my_canvas, context, video);
 	});
 }
 
@@ -96,9 +96,9 @@ function clear() {
 const modelParams = {
 	flipHorizontal: true, // flip e.g for video
 	imageScaleFactor: 0.9, // reduce input image size for gains in speed.
-	maxNumBoxes: 3, // maximum number of boxes to detect
-	iouThreshold: 0.9, // ioU threshold for non-max suppression
-	scoreThreshold: 0.8, // confidence threshold for predictions.
+	maxNumBoxes: 5, // maximum number of boxes to detect
+	iouThreshold: 0.7, // ioU threshold for non-max suppression
+	scoreThreshold: 0.7, // confidence threshold for predictions.
 	lableMap: labelMap1,
 };
 handTrack.load(modelParams).then((model) => {
