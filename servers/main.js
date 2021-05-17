@@ -8,6 +8,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.post('/detect', function (req, res) {
 	const data = req.body;
+	console.log(data);
+	res.send('success');
 });
 
 app.listen(3000, function () {
