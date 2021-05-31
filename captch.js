@@ -28,6 +28,13 @@ function checkLength(prevx, prevy, curx, cury) {
 	}
 }
 
+function send_data (data) {
+	fetch('http://34.64.87.171:3000/detect',{
+		method: "POST",
+		body: JSON.stringify(data)
+	}).then((response)=>{console.log(response)});
+}
+
 function start_video() {
 	var video = document.querySelector('#video');
 	if (navigator.mediaDevices.getUserMedia) {
@@ -68,6 +75,7 @@ function run_detection() {
 				first_draw = true; //이후에 그려지는 그림은 다시 처음부터 그려짐
 				ctx.clearRect(0, 0, draw_canvas.width, draw_canvas.height); //캔버스에 그려진 그림을 지움
 				console.log(drawData);
+				send_data(drawData);
 				count = 0; //변수에 저장하는 카운터를 0으로 초기화
 			}
 
