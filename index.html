@@ -1,35 +1,1012 @@
-
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>회원가입</title>
-  <meta charset="utf-8">
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1,
+        maximum-scale=1, user-scalable=0">
+<title>SIGN IN - Motion Captcha</title>
+<style id="applicationStylesheet" type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#_1920__1 {
+		position: absolute;
+		width: 1920px;
+		height: 1505px;
+		overflow: hidden;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	#_102 {
+		fill: rgba(0,0,0,1);
+	}
+	._102 {
+		position: absolute;
+		overflow: visible;
+		width: 1920px;
+		height: 80px;
+		left: 0px;
+		top: 0px;
+	}
+	#__ {
+		left: 650px;
+		top: 254px;
+		position: absolute;
+		overflow: visible;
+		width: 157px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#ID6_____ {
+		opacity: 0.3;
+		left: 670px;
+		top: 298px;
+		position: absolute;
+		overflow: visible;
+		width: 302px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#____2___6__ {
+		opacity: 0.3;
+		left: 670px;
+		top: 406px;
+		position: absolute;
+		overflow: visible;
+		width: 365px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#-__ {
+		opacity: 0.3;
+		left: 670px;
+		top: 838px;
+		position: absolute;
+		overflow: visible;
+		width: 365px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#_ {
+		left: 650px;
+		top: 470px;
+		position: absolute;
+		overflow: visible;
+		width: 157px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#_n {
+		left: 650px;
+		top: 794px;
+		position: absolute;
+		overflow: visible;
+		width: 157px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#_o {
+		left: 650px;
+		top: 578px;
+		position: absolute;
+		overflow: visible;
+		width: 157px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#_p {
+		left: 650px;
+		top: 686px;
+		position: absolute;
+		overflow: visible;
+		width: 157px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#_q {
+		left: 835px;
+		top: 578px;
+		position: absolute;
+		overflow: visible;
+		width: 157px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#_r {
+		left: 1180px;
+		top: 295px;
+		position: absolute;
+		overflow: visible;
+		width: 81px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#_3 {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._3 {
+		position: absolute;
+		overflow: visible;
+		width: 501px;
+		height: 49px;
+		left: 650px;
+		top: 284px;
+	}
+	#_4 {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._4 {
+		position: absolute;
+		overflow: visible;
+		width: 621px;
+		height: 49px;
+		left: 650px;
+		top: 392px;
+	}
+	#_5 {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._5 {
+		position: absolute;
+		overflow: visible;
+		width: 621px;
+		height: 49px;
+		left: 650px;
+		top: 500px;
+	}
+	#_7 {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._7 {
+		position: absolute;
+		overflow: visible;
+		width: 162px;
+		height: 49px;
+		left: 650px;
+		top: 608px;
+	}
+	#_8 {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._8 {
+		position: absolute;
+		overflow: visible;
+		width: 251px;
+		height: 49px;
+		left: 650px;
+		top: 716px;
+	}
+	#_9 {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._9 {
+		position: absolute;
+		overflow: visible;
+		width: 162px;
+		height: 49px;
+		left: 925px;
+		top: 716px;
+	}
+	#_10 {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._10 {
+		position: absolute;
+		overflow: visible;
+		width: 162px;
+		height: 49px;
+		left: 1110px;
+		top: 716px;
+	}
+	#_11 {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._11 {
+		position: absolute;
+		overflow: visible;
+		width: 436px;
+		height: 49px;
+		left: 835px;
+		top: 608px;
+	}
+	#_12 {
+		opacity: 0.5;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._12 {
+		position: absolute;
+		overflow: visible;
+		width: 101px;
+		height: 49px;
+		left: 1170.5px;
+		top: 284.5px;
+	}
+	#_1 {
+		opacity: 0.5;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._1 {
+		overflow: visible;
+		position: absolute;
+		width: 10.707px;
+		height: 6.064px;
+		left: 780.5px;
+		top: 630px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_2 {
+		opacity: 0.5;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._2 {
+		overflow: visible;
+		position: absolute;
+		width: 10.707px;
+		height: 6.064px;
+		left: 870.5px;
+		top: 738px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_4_ {
+		opacity: 0.5;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._4_ {
+		overflow: visible;
+		position: absolute;
+		width: 10.707px;
+		height: 6.064px;
+		left: 1055.5px;
+		top: 738px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_5_ {
+		opacity: 0.5;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._5_ {
+		overflow: visible;
+		position: absolute;
+		width: 10.707px;
+		height: 6.064px;
+		left: 1240.5px;
+		top: 738px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_ba {
+		left: 1179.75px;
+		top: 835px;
+		position: absolute;
+		overflow: visible;
+		width: 81px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Noto Sans KR;
+		font-size: 18px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	a:link {
+		left: 744.5px;
+		top: 1054.5px;
+		position: absolute;	
+		width: 431px;
+		text-align: center;
+		font-family: Noto Sans KR;
+		z-index: 2;
+	}
+	#_13 {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._13 {
+		position: absolute;
+		overflow: visible;
+		width: 501px;
+		height: 49px;
+		left: 649.75px;
+		top: 824px;
+	}
+	#_14 {
+		opacity: 0.5;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._14 {
+		position: absolute;
+		overflow: visible;
+		width: 101px;
+		height: 49px;
+		left: 1170.25px;
+		top: 824.5px;
+	}
+	#_101 {
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+		z-index: 1;
+	}
+	._101 {
+		position: absolute;
+		overflow: visible;
+		width: 451px;
+		height: 49px;
+		left: 735px;
+		top: 1044px;
+	}
+	#_14________________________ {
+		left: 705px;
+		top: 909px;
+		position: absolute;
+		overflow: visible;
+		width: 511px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		color: rgba(82,82,82,1);
+	}
+	#_1_bb {
+		position: absolute;
+		width: 48px;
+		height: 48px;
+		left: 1383px;
+		top: 18px;
+		overflow: visible;
+	}
+	#_30 {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		left: 14px;
+		top: 14px;
+		overflow: visible;
+	}
+	#_29 {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#_10_be {
+		fill: transparent;
+		stroke: rgba(255,255,255,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._10_be {
+		overflow: visible;
+		position: absolute;
+		width: 15.301px;
+		height: 15.301px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_34 {
+		fill: rgba(255,255,255,1);
+	}
+	._34 {
+		width: 9.585px;
+		height: 2px;
+		position: absolute;
+		overflow: visible;
+		transform: translate(0px, 0px) matrix(1,0,0,1,11.1112,14.9039) rotate(45deg);
+		transform-origin: center;
+	}
+	#_77 {
+		fill: transparent;
+	}
+	._77 {
+		position: absolute;
+		overflow: visible;
+		width: 48px;
+		height: 48px;
+		left: 0px;
+		top: 0px;
+	}
+	#_2_bh {
+		fill: transparent;
+	}
+	._2_bh {
+		position: absolute;
+		overflow: visible;
+		width: 119px;
+		height: 48px;
+		left: 1431px;
+		top: 18px;
+	}
+	#_3_bi {
+		position: absolute;
+		width: 72.963px;
+		height: 18px;
+		left: 1454px;
+		top: 33px;
+		overflow: visible;
+	}
+	#KOREA {
+		left: 0px;
+		top: 0px;
+		position: absolute;
+		overflow: visible;
+		width: 53px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 14px;
+		color: rgba(255,255,255,1);
+	}
+	#_44 {
+		fill: transparent;
+		stroke: rgba(255,255,255,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._44 {
+		overflow: visible;
+		position: absolute;
+		width: 6.672px;
+		height: 4.067px;
+		left: 67px;
+		top: 6.626px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#LOG-IN {
+		opacity: 0.3;
+		left: 780px;
+		top: 150px;
+		position: absolute;
+		overflow: visible;
+		width: 121px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 24px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#SIGN-UP {
+		left: 1020px;
+		top: 150px;
+		position: absolute;
+		overflow: visible;
+		width: 121px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 24px;
+		color: rgba(0,0,0,1);
+		letter-spacing: 0.45px;
+	}
+	#HAND-GESTURE_CAPTCHA_demo {
+		left: 650px;
+		top: 20px;
+		position: absolute;
+		overflow: visible;
+		width: 621px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 36px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.45px;
+	}
+	#_1_bo {
+		opacity: 0.3;
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._1_bo {
+		overflow: visible;
+		position: absolute;
+		width: 220px;
+		height: 2px;
+		left: 730px;
+		top: 199px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_2_bp {
+		fill: transparent;
+		stroke: rgba(0,0,0,1);
+		stroke-width: 2px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	._2_bp {
+		overflow: visible;
+		position: absolute;
+		width: 220px;
+		height: 2px;
+		left: 970px;
+		top: 199px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#_4_bq {
+		position: absolute;
+		width: 1920px;
+		height: 217px;
+		left: 0px;
+		top: 1290px;
+		overflow: visible;
+	}
+	#_100 {
+		fill: rgba(0,0,0,1);
+	}
+	._100 {
+		position: absolute;
+		overflow: visible;
+		width: 1920px;
+		height: 217px;
+		left: 0px;
+		top: 0px;
+	}
+	#HyunA_Yoo {
+		left: 370px;
+		top: 68px;
+		position: absolute;
+		overflow: visible;
+		width: 81px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.1px;
+	}
+	#___bt {
+		opacity: 0.5;
+		left: 370px;
+		top: 35px;
+		position: absolute;
+		overflow: visible;
+		width: 81px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 12px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.1px;
+	}
+	#HyunJun_Lee {
+		left: 370px;
+		top: 142px;
+		position: absolute;
+		overflow: visible;
+		width: 97px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.1px;
+	}
+	#MyungSoo_Han {
+		left: 370px;
+		top: 105px;
+		position: absolute;
+		overflow: visible;
+		width: 113px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.1px;
+	}
+	#_1_bw {
+		fill: rgba(0,0,0,1);
+	}
+	._1_bw {
+		position: absolute;
+		overflow: visible;
+		width: 450px;
+		height: 48px;
+		left: 735px;
+		top: 1112px;
+	}
+	#_bx {
+		left: 881px;
+		top: 1123px;
+		position: absolute;
+		overflow: visible;
+		width: 157px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Noto Sans KR;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(255,255,255,1);
+		letter-spacing: 0.45px;
+	}
+</style>
+</script>
 </head>
-
 <body>
-  
-    <form>
-        <div class="name">
-            <input type='text' placeholder='name' />
-        </div>
-        <div class="id">
-            <input type='text' placeholder='ID' />
-        </div>
-        <div class="password">
-            <input type='text' placeholder='password' />
-        </div>
-        <div class='re-enter_password'>
-            <input type='text' placeholder="re-enter password"/>
-        </div>
-        <div class="e-mail">
-            <input type='text' placeholder='e-mail address' />
-        </div>
-        <div class="submit">
-            <input type='submit' value="sign in" />
-        </div>
-    </form>
-    <a href="./captch.html">로봇이 아닙니다</a>
+
+<a href="./captcha.html">로봇이 아닙니다</a>
+
+<div id="_1920__1">
+	<svg class="_102">
+		<rect id="_102" rx="0" ry="0" x="0" y="0" width="1920" height="80">
+		</rect>
+	</svg>
+	<div id="__">
+		<span>아이디 또는 이메일</span>
+	</div>
+	<div id="ID6_____">
+		<span>6자 이상의 영문,숫자 또는 영문+숫자 입력가능</span>
+	</div>
+	<div id="____2___6__">
+		<span>영문, 숫자, 특수문자 중 2가지 이상 조합으로 6자 이상 가능</span>
+	</div>
+	<div id="-__">
+		<span>‘-’ 없이 입력</span>
+	</div>
+	<div id="">
+		<span>비밀번호</span>
+	</div>
+	<div id="_">
+		<span>비밀번호 확인</span>
+	</div>
+	<div id="_n">
+		<span>전화번호(휴대폰)</span>
+	</div>
+	<div id="_o">
+		<span>성별</span>
+	</div>
+	<div id="_p">
+		<span>생년월일</span>
+	</div>
+	<div id="_q">
+		<span>이름</span>
+	</div>
+	<div id="_r">
+		<span>확인</span>
+	</div>
+	
+	<svg class="_3">
+		<rect id="_3" rx="0" ry="0" x="0" y="0" width="500" height="48">
+		</rect>
+	</svg>
+	<svg class="_4">
+		<rect id="_4" rx="0" ry="0" x="0" y="0" width="620" height="48">
+		</rect>
+	</svg>
+	<svg class="_5">
+		<rect id="_5" rx="0" ry="0" x="0" y="0" width="620" height="48">
+		</rect>
+	</svg>
+	<svg class="_7">
+		<rect id="_7" rx="0" ry="0" x="0" y="0" width="161" height="48">
+		</rect>
+	</svg>
+	<svg class="_8">
+		<rect id="_8" rx="0" ry="0" x="0" y="0" width="250" height="48">
+		</rect>
+	</svg>
+	<svg class="_9">
+		<rect id="_9" rx="0" ry="0" x="0" y="0" width="161" height="48">
+		</rect>
+	</svg>
+	<svg class="_10">
+		<rect id="_10" rx="0" ry="0" x="0" y="0" width="161" height="48">
+		</rect>
+	</svg>
+	<svg class="_11">
+		<rect id="_11" rx="0" ry="0" x="0" y="0" width="435" height="48">
+		</rect>
+	</svg>
+	<svg class="_12">
+		<rect id="_12" rx="0" ry="0" x="0" y="0" width="100" height="48">
+		</rect>
+	</svg>
+	<svg class="_1" viewBox="3496.228 1092.116 10 5">
+		<path id="_1" d="M 3496.22802734375 1092.1162109375 L 3501.32568359375 1097.1162109375 L 3506.22802734375 1092.1162109375">
+		</path>
+	</svg>
+	<svg class="_2" viewBox="3496.228 1092.116 10 5">
+		<path id="_2" d="M 3496.22802734375 1092.1162109375 L 3501.32568359375 1097.1162109375 L 3506.22802734375 1092.1162109375">
+		</path>
+	</svg>
+	<svg class="_4_" viewBox="3496.228 1092.116 10 5">
+		<path id="_4_" d="M 3496.22802734375 1092.1162109375 L 3501.32568359375 1097.1162109375 L 3506.22802734375 1092.1162109375">
+		</path>
+	</svg>
+	<svg class="_5_" viewBox="3496.228 1092.116 10 5">
+		<path id="_5_" d="M 3496.22802734375 1092.1162109375 L 3501.32568359375 1097.1162109375 L 3506.22802734375 1092.1162109375">
+		</path>
+	</svg>
+	<div id="_ba">
+		<span>인증</span>
+	</div>
+
+	<svg class="_13">
+		<rect id="_13" rx="0" ry="0" x="0" y="0" width="500" height="48">
+		</rect>
+	</svg>
+	<svg class="_14">
+		<rect id="_14" rx="0" ry="0" x="0" y="0" width="100" height="48">
+		</rect>
+	</svg>
+	<svg class="_101">
+		<rect id="_101" rx="0" ry="0" x="0" y="0" width="450" height="48">
+		</rect>
+	</svg>
+	<div id="_14________________________">
+		<span>만 14세 이상이며 온라인 사이트 이용약관 ,</span><br><span style="font-size:16px;color:rgba(0,0,0,1);text-decoration:underline;">개인정보 수집 및 이용동의</span><span> 및 </span><span style="font-size:16px;color:rgba(0,0,0,1);text-decoration:underline;">멤버십 이용약관</span><span>을 확인하였고 동의합니다.<br/>고객님께서는 개인정보 수집 및 이용동의를 거부하실 수있으며,<br/>동의거부시 회원가입이 제한됩니다.</span>
+	</div>
+	<div id="_1_bb">
+		<div id="_30">
+			<div id="_29">
+				<svg class="_10_be" viewBox="0 0 15.301 15.301">
+					<path id="_10_be" d="M 7.650524139404297 0 C 11.87579250335693 0 15.30104827880859 3.425256252288818 15.30104827880859 7.650524139404297 C 15.30104827880859 11.87579250335693 11.87579250335693 15.30104827880859 7.650524139404297 15.30104827880859 C 3.425256252288818 15.30104827880859 0 11.87579250335693 0 7.650524139404297 C 0 3.425256252288818 3.425256252288818 0 7.650524139404297 0 Z">
+					</path>
+				</svg>
+				<svg class="_34">
+					<rect id="_34" rx="0" ry="0" x="0" y="0" width="9.585" height="2">
+					</rect>
+				</svg>
+			</div>
+		</div>
+		<svg class="_77">
+			<rect id="_77" rx="0" ry="0" x="0" y="0" width="48" height="48">
+			</rect>
+		</svg>
+	</div>
+	<svg class="_2_bh">
+		<rect id="_2_bh" rx="0" ry="0" x="0" y="0" width="119" height="48">
+		</rect>
+	</svg>
+	<div id="_3_bi">
+		<div id="KOREA">
+			<span>KOREA</span>
+		</div>
+		<svg class="_44" viewBox="3496.228 1092 5.962 3">
+			<path id="_44" d="M 3496.22802734375 1092 L 3499.29296875 1095 L 3502.1904296875 1092">
+			</path>
+		</svg>
+	</div>
+	<div id="LOG-IN">
+		<span>LOG-IN</span>
+	</div>
+	<div id="SIGN-UP">
+		<span>SIGN-UP</span>
+	</div>
+	<div id="HAND-GESTURE_CAPTCHA_demo">
+		<span>HAND-GESTURE CAPTCHA demo</span>
+	</div>
+	<svg class="_1_bo" viewBox="0 0 220 2">
+		<path id="_1_bo" d="M 0 0 L 220 0">
+		</path>
+	</svg>
+	<svg class="_2_bp" viewBox="0 0 220 2">
+		<path id="_2_bp" d="M 0 0 L 220 0">
+		</path>
+	</svg>
+	<div id="_4_bq">
+		<svg class="_100">
+			<rect id="_100" rx="0" ry="0" x="0" y="0" width="1920" height="217">
+			</rect>
+		</svg>
+		<div id="HyunA_Yoo">
+			<span>HyunA Yoo</span>
+		</div>
+		<div id="___bt">
+			<span>만들고 있는 사람</span>
+		</div>
+		<div id="HyunJun_Lee">
+			<span>HyunJun Lee</span>
+		</div>
+		<div id="MyungSoo_Han">
+			<span>MyungSoo Han</span>
+		</div>
+	</div>
+	<svg class="_1_bw">
+		<rect id="_1_bw" rx="0" ry="0" x="0" y="0" width="450" height="48">
+		</rect>
+	</svg>
+	<div id="_bx">
+		<span>가입하기</span>
+	</div>
+</div>
 </body>
-
-
+</html>
