@@ -28,11 +28,16 @@ function checkLength(prevx, prevy, curx, cury) {
 	}
 }
 
-function send_data (data) {
-	fetch('http://34.64.87.171:3000/detect',{
-		method: "POST",
-		body: JSON.stringify(data)
-	}).then((response)=>{console.log(response)});
+function send_data(data) {
+	fetch('http://localhost:3000/detect', {
+		method: 'POST',
+		body: JSON.stringify(data),
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+	}).then((response) => {
+		console.log(response);
+	});
 }
 
 function start_video() {
