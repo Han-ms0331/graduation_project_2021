@@ -15,13 +15,34 @@ const connection = mysql.createConnection({
 
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', function (req, res) {
-	res.send('hi');
-});
-
 app.post('/detect', function (req, res) {
-	const data = req.body;
-	console.log(req);
+	let data = JSON.parse(Object.keys(req.body)[0]);
+	let i = 1;
+
+	connection.query(
+		`INSERT INTO dataset (No,location_tag) VALUES (${data[0].timestamp},${data[0].location_tag})`,
+		(err, rows, fields) => {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log(rows.No);
+			}
+		}
+	);
+
+	for (i in data) {
+		connection.query(
+			`INSERT INTO data_array (location_tag,dataset_no,x_location,y_location) VALUES (${data[0].location_tag},${data[0].timestamp},${data[i].x},${data[i].y})`,
+			(err, rows, fields) => {
+				if (err) {
+					console.log(err);
+				} else {
+					console.log(rows.a_no);
+				}
+			}
+		);
+	}
+	console.log(data);
 	res.send('check');
 });
 
