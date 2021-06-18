@@ -29,15 +29,17 @@ function checkLength(prevx, prevy, curx, cury) {
 }
 
 function send_data(data) {
-	fetch('http://localhost:3000/detect', {
-		method: 'POST',
-		body: JSON.stringify(data),
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded',
-		},
-	}).then((response) => {
-		console.log(response);
-	});
+	if (send_count < 1) {
+		fetch('http://localhost:3000/detect', {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+		}).then((response) => {
+			console.log(response);
+		});
+	}
 }
 
 function start_video() {
@@ -60,7 +62,8 @@ let startX = 0;
 let startY = 0;
 let curX = 0;
 let curY = 0;
-let count = 0;
+let count = 1;
+let send_count = 0;
 function run_detection() {
 	lmodel.detect(my_video).then((predictions) => {
 		lmodel.renderPredictions(predictions, my_canvas, context, video); //손 모양을 인식하는 모듈을 캔버스에 랜더링 하는 부분
@@ -79,9 +82,14 @@ function run_detection() {
 				draw_work = false; //그림그리기 종료
 				first_draw = true; //이후에 그려지는 그림은 다시 처음부터 그려짐
 				ctx.clearRect(0, 0, draw_canvas.width, draw_canvas.height); //캔버스에 그려진 그림을 지움
+				drawData[0] = {
+					timestamp: localStorage.getItem('timestamp'),
+					location_tag: localStorage.getItem('mission_num'),
+				};
 				console.log(drawData);
 				send_data(drawData);
-				count = 0; //변수에 저장하는 카운터를 0으로 초기화
+				send_count++;
+				count = 1; //변수에 저장하는 카운터를 1로 초기화
 			}
 
 			if (detected_class === 'open' && draw_work === true) {
