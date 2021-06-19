@@ -36,18 +36,18 @@ app.post('/detect', function (req, res) {
 		}
 	);
 
-	// for (i in data) {
-	// 	connection.query(
-	// 		`INSERT INTO data_array (location_tag,dataset_no,x_location,y_location) VALUES (${data[0].location_tag},${data[0].timestamp},${data[i].x},${data[i].y})`,
-	// 		(err, rows, fields) => {
-	// 			if (err) {
-	// 				console.log(err);
-	// 			} else {
-	// 				console.log(rows.a_no);
-	// 			}
-	// 		}
-	// 	);
-	// }
+	for (i in data) {
+		connection.query(
+			`INSERT INTO data_array (location_tag,dataset_no,x_location,y_location) VALUES (${data[0].location_tag},${data[0].timestamp},${data[i].x},${data[i].y})`,
+			(err, rows, fields) => {
+				if (err) {
+					console.log(err);
+				} else {
+					console.log(rows.a_no);
+				}
+			}
+		);
+	}
 	res.send('check');
 });
 
