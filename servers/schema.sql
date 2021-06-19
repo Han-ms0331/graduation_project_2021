@@ -1,5 +1,5 @@
 create table dataset(
-    No INT NOT NULL auto_increment primary key,
+    set_no VARCHAR(30) NOT NULL primary key,
     location_tag VARCHAR(100) NOT NULL
 )ENGINE=MYISAM CHARSET=utf8;
 

@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-	host: '34.64.87.171',
+	host: '34.64.121.246',
 	user: 'nobot',
 	password: 'nobotgproject',
 	port: 3306,
