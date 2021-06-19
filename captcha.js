@@ -116,5 +116,4 @@ handTrack.load(modelParams).then((model) => {
 	lmodel = model;
 	// console.log(model.getModelParameters());
 	btn_loading.style.display = 'none';
-	start_video();
 });
