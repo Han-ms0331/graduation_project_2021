@@ -3,9 +3,9 @@ const app = express();
 const path = require('path');
 const url = require('url');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mariadb = require('mariadb');
 
-const connection = mysql.createConnection({
+const connection = mariadb.createConnection({
 	host: '34.64.121.246',
 	user: 'nobot',
 	password: 'nobotgproject',
