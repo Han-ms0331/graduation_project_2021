@@ -5,11 +5,11 @@ const url = require('url');
 const bodyParser = require('body-parser');
 const mariadb = require('mariadb');
 
-const connection = mariadb.createConnection({
+const pool = mariadb.createPool({
 	host: '34.64.121.246',
 	user: 'nobot',
 	password: 'nobotgproject',
-	port: 3306,
+	port: 3308,
 	database: 'gproject',
 });
 
@@ -19,35 +19,28 @@ app.get('/', function (req, res) {
 	res.send('hi');
 });
 
-app.post('/detect', function (req, res) {
+app.post('/detect', async function (req, res) {
 	let data = JSON.parse(Object.keys(req.body)[0]);
 	let i = 1;
 	console.log(data[0]);
+	const connection = await pool.getConnection();
 
-	connection.query(
-		`INSERT INTO dataset (set_no,location_tag) VALUES (${data[0].timestamp},${data[0].location_tag})`,
-		(err, rows, fields) => {
-			if (err) {
-				console.log(err);
-			} else {
-				console.log(rows.set_no);
-			}
-		}
+	const result = await connection.query(
+		`INSERT INTO dataset (set_no,location_tag) VALUES (${data[0].timestamp},${data[0].location_tag})`
 	);
-
-	for (i in data) {
-		connection.query(
-			`INSERT INTO data_array (location_tag,dataset_no,x_location,y_location) VALUES (${data[0].location_tag},${data[0].timestamp},${data[i].x},${data[i].y})`,
-			(err, rows, fields) => {
-				if (err) {
-					console.log(err);
-				} else {
-					console.log(rows.a_no);
-				}
-			}
-		);
-	}
-	console.log(data);
+	console.log(result[0]);
+	// for (i in data) {
+	// 	connection.query(
+	// 		`INSERT INTO data_array (location_tag,dataset_no,x_location,y_location) VALUES (${data[0].location_tag},${data[0].timestamp},${data[i].x},${data[i].y})`,
+	// 		(err, rows, fields) => {
+	// 			if (err) {
+	// 				console.log(err);
+	// 			} else {
+	// 				console.log(rows.a_no);
+	// 			}
+	// 		}
+	// 	);
+	// }
 	res.send('check');
 });
 
