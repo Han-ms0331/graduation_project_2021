@@ -22,6 +22,7 @@ app.get('/', function (req, res) {
 app.post('/detect', function (req, res) {
 	let data = JSON.parse(Object.keys(req.body)[0]);
 	let i = 1;
+	console.log(data[0]);
 
 	connection.query(
 		`INSERT INTO dataset (set_no,location_tag) VALUES (${data[0].timestamp},${data[0].location_tag})`,
@@ -29,7 +30,7 @@ app.post('/detect', function (req, res) {
 			if (err) {
 				console.log(err);
 			} else {
-				console.log(rows.No);
+				console.log(rows.set_no);
 			}
 		}
 	);
