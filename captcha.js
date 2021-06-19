@@ -30,7 +30,7 @@ function checkLength(prevx, prevy, curx, cury) {
 
 function send_data(data) {
 	if (send_count < 1) {
-		fetch('http://34.64.87.171:3000/detect', {
+		fetch('http://34.64.121.246:3000/detect', {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: {
