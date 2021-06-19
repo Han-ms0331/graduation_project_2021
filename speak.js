@@ -1,4 +1,5 @@
 const order = [
+	//인증을 받기 위해 진행해야 할 미션들
 	'손바닥을 펴서 허공에 원을 시계방향으로 그리시오',
 	'손바닥을 펴서 허공에 원을 반시계방향으로 그리시오',
 	'손바닥을 펴서 허공에 위가 뾰족한 삼각형을 그리시오',
@@ -42,11 +43,19 @@ const order = [
 	'손바닥을 펴서 허공에 골뱅이표 기호를 그리시오',
 ];
 
-let number = Math.floor(Math.random() * 42);
+let number = Math.floor(Math.random() * 42); //위의 미션들중 하나를 랜덤으로 선택
+
 const now = new Date();
-const timestamp = `${now.getDate()}:${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-localStorage.setItem('timestamp', timestamp);
-localStorage.setItem('mission_num', number);
+const timestamp = `${now.getDate()}:${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`; //timestamp
+
+localStorage.setItem('timestamp', timestamp); //만들어진 timestamp를 localstorage에 저장
+localStorage.setItem('mission_num', number); //골라진 미션의 번호를 localstorage에 저장
+
+/*
+    함수이름: speak
+    기능: order에서 골라진 명령을 tts로 읽어주는 함수
+    인자: text-읽을 명령을 받음, opt_prop-속도 음의 높낮이 등 tts설정을 받음
+*/
 
 function speak(text, opt_prop) {
 	if (
@@ -73,23 +82,11 @@ function speak(text, opt_prop) {
 const btnRead = document.getElementById('read-btn');
 
 btnRead.addEventListener('click', (e) => {
+	//html에 구현된 음성 출력 버튼을 눌렀을때 실행되는 함수
 	speak(order[number], {
+		//speak함수를 호출
 		rate: 1,
 		pitch: 1.1,
 		lang: 'ko-KR',
 	});
 });
-
-// btnRead.addEventListener("click", e => {
-//     speak(order[0], {
-//         rate: 1,
-//         pitch: 1.2,
-//         lang: "ko-KR"
-//     })
-// });
-// window.onload = speak(order[0],
-//     {
-//         rate: 1,
-//         pitch: 1.2,
-//         lang: 'ko-KR'
-//     });
