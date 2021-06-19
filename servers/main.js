@@ -24,7 +24,7 @@ app.post('/detect', function (req, res) {
 	let i = 1;
 
 	connection.query(
-		`INSERT INTO dataset (No,location_tag) VALUES (${data[0].timestamp},${data[0].location_tag})`,
+		`INSERT INTO dataset (set_no,location_tag) VALUES (${data[0].timestamp},${data[0].location_tag})`,
 		(err, rows, fields) => {
 			if (err) {
 				console.log(err);
