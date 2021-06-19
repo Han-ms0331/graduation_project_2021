@@ -3,10 +3,10 @@ const app = express();
 const path = require('path');
 const url = require('url');
 const bodyParser = require('body-parser');
-const mariadb = require('mariadb');
+const mysql = require('mysql');
 const { connect } = require('http2');
 
-const pool = mariadb.createPool({
+const connection = mysql.createConnection({
 	host: '34.64.121.246',
 	user: 'nobot',
 	password: 'nobotgproject',
@@ -24,12 +24,17 @@ app.post('/detect', function (req, res) {
 	let data = JSON.parse(Object.keys(req.body)[0]);
 	let i = 1;
 	console.log(data);
-
-	const connection = pool.getConnection();
-	const result = connection.query(
-		`INSERT INTO dataset (set_no,location_tag) VALUES ('${data[0].timestamp}','${data[0].location_tag}')`
+	connection.connect;
+	connection.query(
+		`INSERT INTO dataset (set_no,location_tag) VALUES ('${data[0].timestamp}','${data[0].location_tag}')`,
+		(err, rows, fields) => {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log(rows.set_no);
+			}
+		}
 	);
-	console.log(result);
 
 	// for (i in data) {
 	// 	connection.query(
