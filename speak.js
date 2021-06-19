@@ -41,10 +41,10 @@ const order = [
 	'손바닥을 펴서 허공에 우물 정자를 그리시오',
 	'손바닥을 펴서 허공에 골뱅이표 기호를 그리시오',
 ];
-const now = new Date();
-const timestamp = `${now.getDate()}:${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
 let number = Math.floor(Math.random() * 42);
+const now = new Date();
+const timestamp = `${now.getDate()}:${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 localStorage.setItem('timestamp', timestamp);
 localStorage.setItem('mission_num', number);
 
@@ -75,7 +75,7 @@ const btnRead = document.getElementById('read-btn');
 btnRead.addEventListener('click', (e) => {
 	speak(order[number], {
 		rate: 1,
-		pitch: 1,
+		pitch: 1.1,
 		lang: 'ko-KR',
 	});
 });
