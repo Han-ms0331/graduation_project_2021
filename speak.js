@@ -75,7 +75,7 @@ const btnRead = document.getElementById('read-btn');
 btnRead.addEventListener('click', (e) => {
 	speak(order[number], {
 		rate: 1,
-		pitch: 1.2,
+		pitch: 1,
 		lang: 'ko-KR',
 	});
 });
