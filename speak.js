@@ -41,9 +41,10 @@ const order = [
 	'손바닥을 펴서 허공에 덧셈 기호를 그리시오',
 	'손바닥을 펴서 허공에 우물 정자를 그리시오',
 	'손바닥을 펴서 허공에 골뱅이표 기호를 그리시오',
+	'손바닥을 펴서 허공에 숫자 칠을 그리시오'
 ];
 
-let number = Math.floor(Math.random() * 42); //위의 미션들중 하나를 랜덤으로 선택
+let number = Math.floor(Math.random() * 43); //위의 미션들중 하나를 랜덤으로 선택
 
 const now = new Date();
 const timestamp = `${now.getDate()}:${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`; //timestamp
@@ -86,7 +87,7 @@ btnRead.addEventListener('click', (e) => {
 	speak(order[number], {
 		//speak함수를 호출
 		rate: 1,
-		pitch: 1.1,
+		pitch: 1,
 		lang: 'ko-KR',
 	});
 });
