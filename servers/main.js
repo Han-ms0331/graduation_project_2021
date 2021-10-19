@@ -1,5 +1,5 @@
 //서버 설정에 필요한 모듈들을 import
-// const express = require('express');
+const express = require('express');
 const app = express();
 const path = require('path');
 const url = require('url');
