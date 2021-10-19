@@ -45,6 +45,7 @@ function send_data(time,count) {
         console.log(response);
         console.log(response.result);
         console.log(response.body); //응답을 출력
+        console.log(response.send);
         if (response ==='success') {
             console.log("success");
             my_video.style.display = 'none';
