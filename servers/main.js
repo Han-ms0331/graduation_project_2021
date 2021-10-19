@@ -44,11 +44,11 @@ app.post('/authentication', function (req, res) {
 	let data = JSON.parse(Object.keys(req.body)[0]);
 	console.log(data);
 	if(check_bot(data.time, data.count))
-		res.send('success');
+		res.send({result:'success'});
 	else
-		res.send('failed');
+		res.send({result:'failed'});
 	console.log(res.send);
-	console.log(res.body);
+	console.log(res.result);
 });
 
 
