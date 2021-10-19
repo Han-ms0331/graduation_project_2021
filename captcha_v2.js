@@ -34,7 +34,7 @@ function send_data(time,count) {
         count:count
     }
 
-    fetch('http://http://34.64.187.133:3000/check', {
+    fetch('http://34.64.253.187:3000/authentication', {
         //서버와 url로 통신하는 fetch함수를 사용
         method: 'POST',
         body: JSON.stringify(data),
@@ -43,7 +43,15 @@ function send_data(time,count) {
         },
     }).then((response) => {
         console.log(response); //응답을 출력
-        result = response;
+        if (response ==='success') {
+            console.log("success");
+            my_video.style.display = 'none';
+            alert("인증에 성공하였습니다")
+        } else {
+            console.log("fail");
+            my_video.style.display = 'none';
+            alert("인증에 실패하였습니다")
+        }
     })
 }
 
@@ -93,15 +101,6 @@ async function run_detection() {
         if (closeCount > 1 && (predictions[1].label === secondOrder || predictions[0].label === secondOrder)) {
             closeCount = -1
             send_data(term[termNum], openCount)
-            if (result ==='success') {
-                console.log("success");
-                my_video.style.display = 'none';
-                alert("인증에 성공하였습니다")
-            } else {
-                console.log("fail");
-                my_video.style.display = 'none';
-                alert("인증에 실패하였습니다")
-            }
         }
     });
 }
