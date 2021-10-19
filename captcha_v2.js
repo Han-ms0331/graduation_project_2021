@@ -12,6 +12,8 @@ let closeCount = 0;
 let openCount = 0;
 let termNum = Math.floor(Math.random() * 5);
 let drawData = []; //서버에 보낼 데이터를 담는 배열
+const firstOrder = localStorage.getItem("firstOrder");
+const secondOrder = localStorage.getItem("secondOrder");
 
 my_video.style.display = 'none'; //처음에는 화면에 웹캠을 표시하지 ㅇ않음
 
@@ -41,7 +43,7 @@ function send_data(data) {
 	}
 }
 
-/* 
+/*
 	함수이름: start_video
 	기능: 웹캠을 띄울 캕버스를 설정함
 	인자: 없음
@@ -64,14 +66,14 @@ function start_video() {
 }
 
 function check_bot(time,count){
-	let targetCount = 0.035*time;
-	let minimumCount = targetCount*0.85;
-	let maximumCount = targetCount*1.15;
-	console.log(targetCount);
-	console.log(minimumCount);
-	console.log(maximumCount);
-	console.log(time);
-	console.log(count);
+	let targetCount = 0.020*time;
+	let minimumCount = targetCount*0.70;
+	let maximumCount = targetCount*1.30;
+	// console.log(targetCount);
+	// console.log(minimumCount);
+	// console.log(maximumCount);
+	// console.log(time);
+	// console.log(count);
 	if (count > minimumCount && count < maximumCount) {
 		return true;
 	} else {
@@ -79,12 +81,12 @@ function check_bot(time,count){
 	}
 }
 
-/* 
+/*
 	함수이름: run_detection
 	기능: 웹캠에 띄워진 손을 인식하여 그림을 그리고 그림의 좌표들을 배열에 담음
 	인자: 없음
 */
- async function run_detection() {
+async function run_detection() {
 	lmodel.detect(my_video).then((predictions) => {
 		lmodel.renderPredictions(predictions, my_canvas, context, video); //손 모양을 인식하는 모듈을 캔버스에 랜더링 하는 부분
 		// if (predictions[0].label !== undefined && predictions[0].label !== 'face') {
@@ -122,23 +124,26 @@ function check_bot(time,count){
 		// 	}
 		// }
 		if ((predictions[1].label === 'closed' || predictions[0].label === 'closed') && closeCount === 0) {
-			console.log(predictions);
 			closeCount++;
 			beep();
 		}
-		if (closeCount >=1 && (predictions[1].label === 'open' || predictions[0].label === 'open')) {
+		if (closeCount >=1 && (predictions[1].label === firstOrder || predictions[0].label === firstOrder)) {
 			if (closeCount === 1) {
 				closeCount++;
 			}
 			openCount++;
 			console.log(openCount);
 		}
-		if(closeCount > 1 && (predictions[1].label === 'closed' || predictions[0].label === 'closed')){
+		if(closeCount > 1 && (predictions[1].label === secondOrder || predictions[0].label === secondOrder)){
 			closeCount= -1
 			if (check_bot(term[termNum], openCount)) {
 				console.log("success");
+				my_video.style.display = 'none';
+				alert("인증에 성공하였습니다")
 			} else {
 				console.log("fail");
+				my_video.style.display = 'none';
+				alert("인증에 실패하였습니다")
 			}
 		}
 	});
@@ -173,4 +178,3 @@ handTrack.load(modelParams).then((model) => {
 	btn_loading.style.display = 'none';
 	start_video();
 });
-
