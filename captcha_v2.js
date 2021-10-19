@@ -42,7 +42,7 @@ function send_data(time,count) {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
     }).then((response) => {
-        console.log(response); //응답을 출력
+        console.log(response.send); //응답을 출력
         if (response ==='success') {
             console.log("success");
             my_video.style.display = 'none';

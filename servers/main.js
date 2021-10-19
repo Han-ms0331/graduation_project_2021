@@ -42,9 +42,10 @@ app.post('/authentication', function (req, res) {
 	let data = JSON.parse(Object.keys(req.body)[0]);
 	console.log(data);
 	if(check_bot(data.time, data.count))
-		res.send('success');
+		res.end('success');
 	else
-		res.send('failed')
+		res.end('failed')
+	console.log(res);
 });
 
 
