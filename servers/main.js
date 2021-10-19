@@ -52,6 +52,10 @@ app.post('/authentication', function (req, res) {
 	console.log(res.result);
 });
 
+app.get('/authentication',(req,res) => {
+
+})
+
 
 // app.post('/detect', function (req, res) {
 // 	// /detect로 들어온 요청을 처리하는  미들웨어

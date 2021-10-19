@@ -42,11 +42,9 @@ function send_data(time,count) {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
     }).then((response) => {
-        console.log(response);
-        console.log(response.result);
-        console.log(response.body); //응답을 출력
-        console.log(response.send);
-        if (response ==='success') {
+        return response.json()
+    }).then((data) => {
+        if (data.result ==='success') {
             console.log("success");
             my_video.style.display = 'none';
             alert("인증에 성공하였습니다")
@@ -56,6 +54,7 @@ function send_data(time,count) {
             alert("인증에 실패하였습니다")
         }
     })
+
 }
 
 /*
@@ -79,7 +78,6 @@ function start_video() {
             });
     }
 }
-
 
 
 /*
