@@ -15,14 +15,30 @@ const { connect } = require('http2');
 // 	database: 'gproject',
 // });
 
+function check_bot(time, count) {
+	let targetCount = 0.035 * time;
+	let minimumCount = targetCount * 0.70;
+	let maximumCount = targetCount * 1.30;
+	if (count > minimumCount && count < maximumCount) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 app.use(express.urlencoded({ extended: false })); //url에 담긴 정보를 분석하는 미들웨어
 
 app.listen(3000, function () {
 	console.log('Example app listening on port 3000!');
 });
 
-app.get('/check', function (req, res) {
-	res.send('check');
+app.post('/authentication', function (req, res) {
+	let data = JSON.parse(Object.keys(req.body)[0]);
+	console.log(data);
+	if(check_bot(data.time, data.count))
+		res.send('success');
+	else
+		res.send('failed')
 });
 
 
