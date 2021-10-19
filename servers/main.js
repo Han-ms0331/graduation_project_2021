@@ -47,6 +47,7 @@ app.post('/authentication', function (req, res) {
 		res.send({result:'success'});
 	else
 		res.send({result:'failed'});
+	res.end();
 	console.log(res.send);
 	console.log(res.result);
 });
