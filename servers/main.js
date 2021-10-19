@@ -20,8 +20,10 @@ function check_bot(time, count) {
 	let minimumCount = targetCount * 0.70;
 	let maximumCount = targetCount * 1.30;
 	if (count > minimumCount && count < maximumCount) {
+		console.log("success")
 		return true;
 	} else {
+		console.log("failed")
 		return false;
 	}
 }
@@ -45,7 +47,6 @@ app.post('/authentication', function (req, res) {
 		res.json({result:'success'});
 	else
 		res.json({result:'failed'});
-	console.log(res);
 });
 
 
