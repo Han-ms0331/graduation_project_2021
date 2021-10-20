@@ -48,8 +48,6 @@ app.post('/authentication', function (req, res) {
 	else
 		res.send({result:'failed'});
 	res.end();
-	console.log(res.send);
-	console.log(res.result);
 });
 
 app.get('/authentication',(req,res) => {
