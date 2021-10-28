@@ -13,8 +13,12 @@ let openCount = 0;
 let termNum = Math.floor(Math.random() * 5);
 let drawData = []; //서버에 보낼 데이터를 담는 배열
 const firstOrder = localStorage.getItem("firstOrder");
+console.log(firstOrder);
 const secondOrder = localStorage.getItem("secondOrder");
+console.log(secondOrder);
 let result;
+let fpsSum = 0;
+let fpsCount = 0;
 
 my_video.style.display = 'none'; //처음에는 화면에 웹캠을 표시하지 ㅇ않음
 
@@ -29,9 +33,11 @@ const labelMap1 = {
 	인자: data-서버로 보낼 데이터를 입력받음
 */
 function send_data(time,count) {
+    const averageFPS = fpsSum / fpsCount;
     let data={
         time:time,
-        count:count
+        count:count,
+        averageFPS:averageFPS
     }
 
     fetch('http://34.64.253.187:3000/authentication', {
@@ -88,6 +94,8 @@ function start_video() {
 async function run_detection() {
     lmodel.detect(my_video).then((predictions) => {
         lmodel.renderPredictions(predictions, my_canvas, context, video);
+        fpsSum += lmodel.getFPS();
+        fpsCount++;
         if ((predictions[1].label === 'closed' || predictions[0].label === 'closed') && closeCount === 0) {
             closeCount++;
             beep();
@@ -97,10 +105,12 @@ async function run_detection() {
                 closeCount++;
             }
             openCount++;
-            console.log(openCount);
+            //console.log(openCount);
         }
         if (closeCount > 1 && (predictions[1].label === secondOrder || predictions[0].label === secondOrder)) {
             closeCount = -1
+            console.log(openCount);
+            console.log(fpsSum / fpsCount);
             send_data(term[termNum], openCount)
         }
     });

@@ -15,7 +15,7 @@ const { connect } = require('http2');
 // 	database: 'gproject',
 // });
 
-function check_bot(time, count) {
+function check_bot(time, count, averageFPS) {
 	let targetCount = 0.035 * time;
 	let minimumCount = targetCount * 0.70;
 	let maximumCount = targetCount * 1.30;
@@ -43,7 +43,7 @@ app.listen(3000, function () {
 app.post('/authentication', function (req, res) {
 	let data = JSON.parse(Object.keys(req.body)[0]);
 	console.log(data);
-	if(check_bot(data.time, data.count))
+	if(check_bot(data.time, data.count, data.averageFPS))
 		res.send({result:'success'});
 	else
 		res.send({result:'failed'});
