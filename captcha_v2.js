@@ -111,6 +111,14 @@ async function run_detection() {
             closeCount = -1
             console.log(openCount);
             console.log(fpsSum / fpsCount);
+            console.log("0.01 :"+term[termNum]*0.01);
+            console.log("0.015 :"+term[termNum]*0.015);
+            console.log("0.02 :"+term[termNum]*0.02);
+            console.log("0.025 :"+term[termNum]*0.025);
+            console.log("0.03 :"+term[termNum]*0.03);
+            console.log("0.035 :"+term[termNum]*0.035);
+            console.log("0.04 :"+term[termNum]*0.04);
+            console.log("0.045 :"+term[termNum]*0.045);
             send_data(term[termNum], openCount)
         }
     });
