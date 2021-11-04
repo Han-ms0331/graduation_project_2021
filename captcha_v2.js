@@ -12,6 +12,8 @@ let closeCount = 0;
 let openCount = 0;
 let termNum = Math.floor(Math.random() * 5);
 let drawData = []; //서버에 보낼 데이터를 담는 배열
+let facedetect = false;
+
 const firstOrder = localStorage.getItem("firstOrder");
 console.log(firstOrder);
 const secondOrder = localStorage.getItem("secondOrder");
@@ -25,6 +27,7 @@ my_video.style.display = 'none'; //처음에는 화면에 웹캠을 표시하지
 const labelMap1 = {
     1: 'open',
     2: 'closed',
+    5: 'face',
 }; //handtrack모듈에서 상용하는 파라미터를 위한 객체
 
 /*
@@ -96,6 +99,15 @@ async function run_detection() {
         lmodel.renderPredictions(predictions, my_canvas, context, video);
         fpsSum += lmodel.getFPS();
         fpsCount++;
+        if ((predictions[0].label === 'face') && facedetect === false) {
+            speak(order[3].order + order[number].order + order[4].order + order2[number2].order, {
+                //speak함수를 호출
+                rate: 1,
+                pitch: 1,
+                lang: 'ko-KR',
+            });
+            facedetect = true;
+        }
         if ((predictions[1].label === 'closed' || predictions[0].label === 'closed') && closeCount === 0) {
             closeCount++;
             beep();
