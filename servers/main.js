@@ -16,9 +16,34 @@ const { connect } = require('http2');
 // });
 
 function check_bot(time, count, averageFPS) {
-	let targetCount = 0.035 * time;
+	const multConst =[0.001,0.002, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035]
+	let targetCount;
+	if(averageFPS >=1 && averageFPS<2){
+		targetCount = 0.001 * time;
+	} else if(averageFPS >=2 && averageFPS<3){
+		targetCount = 0.002 * time;
+	} else if(averageFPS >=3 && averageFPS<4){
+		targetCount = 0.005 * time;
+	} else if(averageFPS >=4 && averageFPS<5){
+		targetCount = 0.01 * time;
+	} else if(averageFPS >=5 && averageFPS<6){
+		targetCount = 0.015 * time;
+	} else if(averageFPS >=6 && averageFPS<8){
+		targetCount = 0.02 * time;
+	} else if(averageFPS >=8 && averageFPS<10){
+		targetCount = 0.025 * time;
+	} else if(averageFPS >=10 && averageFPS<12){
+		targetCount = 0.03 * time;
+	} else if(averageFPS >=12){
+		targetCount = 0.035* time;
+	}
 	let minimumCount = targetCount * 0.70;
 	let maximumCount = targetCount * 1.30;
+	console.log(averageFPS);
+	console.log(targetCount);
+	console.log(maximumCount);
+	console.log(minimumCount);
+
 	if (count > minimumCount && count < maximumCount) {
 		console.log("success")
 		return true;
