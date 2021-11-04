@@ -16,7 +16,6 @@ const { connect } = require('http2');
 // });
 
 function check_bot(time, count, averageFPS) {
-	const multConst =[0.001,0.002, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035]
 	let targetCount;
 	if(averageFPS >=1 && averageFPS<2){
 		targetCount = 0.001 * time;
@@ -39,6 +38,7 @@ function check_bot(time, count, averageFPS) {
 	}
 	let minimumCount = targetCount * 0.70;
 	let maximumCount = targetCount * 1.30;
+	console.log(count);
 	console.log(averageFPS);
 	console.log(targetCount);
 	console.log(maximumCount);
