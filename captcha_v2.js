@@ -6,6 +6,16 @@ const bt_loading = document.getElementById('btn_loading'); //handtrack모듈을 
 const ctx = draw_canvas.getContext('2d'); //저장한 캔버스 태그를 그림을 2d로 설정
 const context = my_canvas.getContext('2d'); //저장한 캔버스 태그를 그림을 2d로 설정
 
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = new SpeechRecognition();
+recognition.interimResults = true;
+recognition.lang = 'ko-KR';
+
+
+recognition.onresult = (e) => {
+    console.log(e.results);
+}
+
 
 const term = [2000, 2500, 3000, 3500, 4000]
 let closeCount = 0;
@@ -110,6 +120,7 @@ async function run_detection() {
         }
         if ((predictions[1].label === 'closed' || predictions[0].label === 'closed') && closeCount === 0) {
             closeCount++;
+            recognition.start();
             beep();
         }
         if (closeCount >= 1 && (predictions[1].label === firstOrder || predictions[0].label === firstOrder)) {
@@ -122,20 +133,21 @@ async function run_detection() {
         if (closeCount > 1 && (predictions[1].label === secondOrder || predictions[0].label === secondOrder)) {
             closeCount = -1
             console.log(openCount);
-            console.log(fpsSum / fpsCount);
-            console.log("0.004 :"+term[termNum]*0.001);
-            console.log("0.004 :"+term[termNum]*0.002);
-            console.log("0.004 :"+term[termNum]*0.003);
-            console.log("0.004 :"+term[termNum]*0.004);
-            console.log("0.005 :"+term[termNum]*0.005);
-            console.log("0.01 :"+term[termNum]*0.01);
-            console.log("0.015 :"+term[termNum]*0.015);
-            console.log("0.02 :"+term[termNum]*0.02);
-            console.log("0.025 :"+term[termNum]*0.025);
-            console.log("0.03 :"+term[termNum]*0.03);
-            console.log("0.035 :"+term[termNum]*0.035);
-            console.log("0.04 :"+term[termNum]*0.04);
-            console.log("0.045 :"+term[termNum]*0.045);
+            // console.log(fpsSum / fpsCount);
+            // console.log("0.004 :"+term[termNum]*0.001);
+            // console.log("0.004 :"+term[termNum]*0.002);
+            // console.log("0.004 :"+term[termNum]*0.003);
+            // console.log("0.004 :"+term[termNum]*0.004);
+            // console.log("0.005 :"+term[termNum]*0.005);
+            // console.log("0.01 :"+term[termNum]*0.01);
+            // console.log("0.015 :"+term[termNum]*0.015);
+            // console.log("0.02 :"+term[termNum]*0.02);
+            // console.log("0.025 :"+term[termNum]*0.025);
+            // console.log("0.03 :"+term[termNum]*0.03);
+            // console.log("0.035 :"+term[termNum]*0.035);
+            // console.log("0.04 :"+term[termNum]*0.04);
+            // console.log("0.045 :"+term[termNum]*0.045);
+            recognition.stop();
             send_data(term[termNum], openCount)
         }
     });

@@ -27,13 +27,13 @@ function check_bot(time, count, averageFPS) {
 		targetCount = 0.01 * time;
 	} else if(averageFPS >=5 && averageFPS<6){
 		targetCount = 0.015 * time;
-	} else if(averageFPS >=6 && averageFPS<8){
+	} else if(averageFPS >=6 && averageFPS<9){
 		targetCount = 0.02 * time;
-	} else if(averageFPS >=8 && averageFPS<10){
+	} else if(averageFPS >=9 && averageFPS<12){
 		targetCount = 0.025 * time;
-	} else if(averageFPS >=10 && averageFPS<12){
+	} else if(averageFPS >=12 && averageFPS<14){
 		targetCount = 0.03 * time;
-	} else if(averageFPS >=12){
+	} else if(averageFPS >=14){
 		targetCount = 0.035* time;
 	}
 	let minimumCount = targetCount * 0.70;
