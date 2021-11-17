@@ -7,6 +7,7 @@ const ctx = draw_canvas.getContext('2d'); //저장한 캔버스 태그를 그림
 const context = my_canvas.getContext('2d'); //저장한 캔버스 태그를 그림을 2d로 설정
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let speakResult =""
 let recognition = new SpeechRecognition();
 recognition.interimResults = true;
 recognition.lang = 'ko-KR';
@@ -14,6 +15,9 @@ recognition.lang = 'ko-KR';
 
 recognition.onresult = (e) => {
     console.log(e.results);
+    console.log(e.results[0][0].transcript);
+    speakResult = e.results[0][0].transcript;
+    recognition.stop();
 }
 
 
@@ -28,6 +32,17 @@ const firstOrder = localStorage.getItem("firstOrder");
 console.log(firstOrder);
 const secondOrder = localStorage.getItem("secondOrder");
 console.log(secondOrder);
+
+let speakTarget;
+if (voice_number === 0) {
+    speakTarget = animal[animal_number].label_1;
+} else if (voice_number === 1) {
+    speakTarget = animal[animal_number].label_2;
+} else if (voice_number === 2) {
+    speakTarget = animal[animal_number].label_3;
+}
+console.log(speakTarget);
+
 let result;
 let fpsSum = 0;
 let fpsCount = 0;
@@ -45,12 +60,14 @@ const labelMap1 = {
 	기능: 인자로 받은 데이터를 서버로 보낸다
 	인자: data-서버로 보낼 데이터를 입력받음
 */
-function send_data(time,count) {
+function send_data(time, count, speakRes, speakTar) {
     const averageFPS = fpsSum / fpsCount;
-    let data={
-        time:time,
-        count:count,
-        averageFPS:averageFPS
+    let data = {
+        time: time,
+        count: count,
+        averageFPS: averageFPS,
+        speakTarget: speakTar,
+        speakResult: speakRes
     }
 
     fetch('http://34.64.253.187:3000/authentication', {
@@ -63,7 +80,7 @@ function send_data(time,count) {
     }).then((response) => {
         return response.json()
     }).then((data) => {
-        if (data.result ==='success') {
+        if (data.result === 'success') {
             console.log("success");
             my_video.style.display = 'none';
             alert("인증에 성공하였습니다")
@@ -118,9 +135,8 @@ async function run_detection() {
             });
             facedetect = true;
         }
-        if ((predictions[1].label === 'closed' || predictions[0].label === 'closed') && closeCount === 0) {
+        if ((predictions[1].label === 'closed' || predictions[0].label === 'closed') && closeCount === 0 && facedetect) {
             closeCount++;
-            recognition.start();
             beep();
         }
         if (closeCount >= 1 && (predictions[1].label === firstOrder || predictions[0].label === firstOrder)) {
@@ -147,8 +163,20 @@ async function run_detection() {
             // console.log("0.035 :"+term[termNum]*0.035);
             // console.log("0.04 :"+term[termNum]*0.04);
             // console.log("0.045 :"+term[termNum]*0.045);
-            recognition.stop();
-            send_data(term[termNum], openCount)
+            speak(voice_order[voice_number] + animal[animal_number].order, {
+                //speak함수를 호출
+                rate: 1,
+                pitch: 1,
+                lang: 'ko-KR',
+            })
+            sleep(5000).then(() => {
+                recognition.start();
+                sleep(5000).then(() => {
+                    console.log(speakResult);
+                    console.log(speakTarget === speakResult);
+                    send_data(term[termNum], openCount, speakResult, speakTarget)
+                });
+            })
         }
     });
 }

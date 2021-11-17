@@ -32,6 +32,73 @@ const order2 = [
 	{order: '카메라에 주먹을 보여주세요. 그리고 첫번째 '},
 	{order: ' 두번째 '}
 ];
+const voice_order = [
+	'다음 동물 이름을 듣고 첫번째 음절을 소리내서 읽으세요. ',
+	'다음 동물 이름을 듣고 두번째 음절을 소리내서 읽으세요. ',
+	'다음 동물 이름을 듣고 세번째 음절을 소리내서 읽으세요. '
+];
+const animal = [
+	{
+		order: ' 강아지',
+		label_1: '강',
+		label_2: '아',
+		label_3: '지'
+	},
+	{
+		order: ' 고양이',
+		label_1: '고',
+		label_2: '양',
+		label_3: '이'
+	},
+	{
+		order: ' 돌고래',
+		label_1: '돌',
+		label_2: '고',
+		label_3: '래'
+	},
+	{
+		order: ' 호랑이',
+		label_1: '호',
+		label_2: '랑',
+		label_3: '이'
+	},
+	{
+		order: ' 비둘기',
+		label_1: '비',
+		label_2: '둘',
+		label_3: '기'
+	},
+	{
+		order: ' 미어캣',
+		label_1: '미',
+		label_2: '어',
+		label_3: '캣'
+	},
+	{
+		order: ' 까마귀',
+		label_1: '까',
+		label_2: '마',
+		label_3: '귀'
+	},
+	{
+		order: ' 너구리',
+		label_1: '너',
+		label_2: '구',
+		label_3: '리'
+	},
+	{
+		order: ' 캥거루',
+		label_1: '캥',
+		label_2: '거',
+		label_3: '루'
+	},
+	{
+		order: ' 코끼리',
+		label_1: '코',
+		label_2: '끼',
+		label_3: '리'
+	}
+];
 let number = Math.floor(Math.random() * 2); //위의 미션들중 하나를 랜덤으로 선택
 localStorage.setItem("firstOrder", order[number].label);
 
@@ -40,6 +107,8 @@ order2.splice(number, 1);
 let number2 = Math.floor(Math.random() * 2);
 localStorage.setItem("secondOrder", order2[number2].label);
 
+let voice_number = Math.floor(Math.random() * 3);
+let animal_number = Math.floor(Math.random() * 10);
 
 const now = new Date();
 const timestamp = `${now.getDate()}:${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`; //timestamp

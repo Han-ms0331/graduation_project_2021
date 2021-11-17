@@ -15,7 +15,7 @@ const { connect } = require('http2');
 // 	database: 'gproject',
 // });
 
-function check_bot(time, count, averageFPS) {
+function check_bot(time, count, averageFPS, speakRes, speakTar) {
 	let targetCount;
 	if(averageFPS >=1 && averageFPS<2){
 		targetCount = 0.001 * time;
@@ -44,7 +44,7 @@ function check_bot(time, count, averageFPS) {
 	console.log(maximumCount);
 	console.log(minimumCount);
 
-	if (count > minimumCount && count < maximumCount) {
+	if (count > minimumCount && count < maximumCount && speakTar===speakRes) {
 		console.log("success")
 		return true;
 	} else {
@@ -68,7 +68,7 @@ app.listen(3000, function () {
 app.post('/authentication', function (req, res) {
 	let data = JSON.parse(Object.keys(req.body)[0]);
 	console.log(data);
-	if(check_bot(data.time, data.count, data.averageFPS))
+	if(check_bot(data.time, data.count, data.averageFPS, data.speakResult, data.speakTarget))
 		res.send({result:'success'});
 	else
 		res.send({result:'failed'});
